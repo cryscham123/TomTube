@@ -1,0 +1,21 @@
+%button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-color: transparent;
+  font-size: 1rem;
+  padding: 0.3em 0.5em;
+  border-radius: 3%;
+}
+%link {
+  text-decoration: none;
+  color: transparent;
+}
+%page {
+  margin-top: 4em;
+  padding: 1em 1.5em;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: min-content 1fr;
+  grid-row-gap: 1em;
+}

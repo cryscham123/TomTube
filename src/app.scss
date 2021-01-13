@@ -1,0 +1,154 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap");
+@import "./components/_extends";
+@import "./components/_mixins";
+@import "./components/_variables";
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+li {
+  list-style: none;
+}
+input {
+  outline: none;
+}
+body {
+  font-family: "Noto Sans", sans-serif;
+  background-color: $shallowBlack;
+}
+.nav {
+  background-color: $shallowBlack;
+  position: fixed;
+  top: 0;
+  padding: 1em 1.5em;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+  display: grid;
+  grid-template-columns: repeat(2, max-content);
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  .nav__link {
+    @extend %link;
+    color: $deepwhite;
+    transition: color 0.3s ease-in-out;
+    font-weight: 600;
+    &:hover {
+      color: rgba(255, 255, 255, 0.4);
+    }
+  }
+  .title {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    letter-spacing: 1px;
+    line-height: 1.5rem;
+    .fa-youtube {
+      font-size: 1.5rem;
+      color: $mainColor;
+      margin-right: 0.3em;
+    }
+  }
+  .nav__form {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    .search {
+      width: 100%;
+      font-size: 1rem;
+      padding: 0.2em 0.8em;
+      margin-right: 0.3em;
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      border-radius: 35px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    }
+    .submit {
+      @extend %button;
+      color: $deepwhite;
+      transition: color 0.3s ease-in-out;
+      &:hover {
+        color: rgba(255, 255, 255, 0.4);
+      }
+    }
+  }
+}
+.homeGrid {
+  @extend %page;
+  .homeTitle {
+    color: $deepwhite;
+    font-size: 0.9rem;
+  }
+  .movies {
+    justify-self: center;
+    display: grid;
+    grid-auto-rows: 1fr;
+    border-top: 1px solid rgba(255, 255, 255, 0.4);
+    @include responsive("small") {
+      width: 435px;
+    }
+    @include responsive("medium") {
+      width: 100%;
+    }
+
+    .movie {
+      @extend %link;
+      display: flex;
+      padding-bottom: 0.5em;
+      @include responsive("small") {
+        flex-direction: column;
+      }
+      @include responsive("medium") {
+        padding-top: 1em;
+      }
+      padding-bottom: 1em;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+      &:last-child {
+        border-bottom: none;
+      }
+      .movie__title {
+        color: $deepwhite;
+        transition: color 0.3s ease-in-out;
+      }
+      &:hover .movie__title {
+        color: rgba(255, 255, 255, 0.4);
+      }
+      .movie__thumb {
+        @include responsive("small") {
+          width: 100%;
+          height: auto;
+          margin-bottom: 0.5em;
+        }
+        @include responsive("medium") {
+          width: 320px;
+          height: 180px;
+          margin-right: 24px;
+        }
+      }
+      .movie__info {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        .movie__uploader {
+          color: rgba(255, 255, 255, 0.4);
+          font-size: 0.8rem;
+          margin-top: 0.5em;
+        }
+        .movie__des {
+          @include responsive("small") {
+            display: none;
+          }
+          @include responsive("medium") {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.8rem;
+          }
+        }
+      }
+    }
+  }
+}
+.detailGrid {
+  @extend %page;
+}
