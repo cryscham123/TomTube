@@ -69,6 +69,7 @@ body {
       @extend %button;
       color: $deepwhite;
       transition: color 0.3s ease-in-out;
+      font-size: 1rem;
       &:hover {
         color: rgba(255, 255, 255, 0.4);
       }
@@ -77,6 +78,9 @@ body {
 }
 .homeGrid {
   @extend %page;
+  grid-template-columns: 1fr;
+  grid-template-rows: min-content 1fr;
+  grid-row-gap: 1em;
   .homeTitle {
     color: $deepwhite;
     font-size: 0.9rem;
@@ -151,4 +155,53 @@ body {
 }
 .detailGrid {
   @extend %page;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr min-content;
+  grid-row-gap: 1em;
+  .video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 30px;
+    height: 0;
+    overflow: hidden;
+  }
+
+  .video-container iframe,
+  .video-container object,
+  .video-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .detail__info {
+    justify-self: center;
+    .detail__title {
+      color: $deepwhite;
+    }
+    .detail__uploader {
+      color: rgba(255, 255, 255, 0.4);
+      font-size: 0.8rem;
+      margin: 0.5em 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .desControl {
+        @extend %button;
+        color: $deepwhite;
+        font-size: 0.8rem;
+        transition: color 0.3s ease-in-out;
+        &:hover {
+          color: rgba(255, 255, 255, 0.4);
+        }
+      }
+    }
+    .detail__desCon {
+      display: none;
+      .desCon__des {
+        color: rgba(255, 255, 255, 0.4);
+      }
+    }
+  }
 }

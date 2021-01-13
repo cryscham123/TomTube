@@ -8,6 +8,8 @@ const Movie = ({ id, title, uploader, thumbnailM, des }) => {
             state: {
                 title,
                 uploader,
+                des,
+                id,
                 fromNavigation: true
             }
         }}>

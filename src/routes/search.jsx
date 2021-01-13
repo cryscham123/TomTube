@@ -7,8 +7,9 @@ class Search extends Component {
         isLoading: true,
         items: []
     };
-    getMovies = async() => {
-        const  {data:{items}}  = await axios.get('https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=bts&key=AIzaSyA27KL5mOLc2XfoX9JpmjuInlR9jXfhKmg');
+    getMovies = async () => {
+        const { location: { pathname } } = this.props;
+        const  {data:{items}}  = await axios.get(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${pathname.slice(8)}&key=AIzaSyA27KL5mOLc2XfoX9JpmjuInlR9jXfhKmg`);
         this.setState({ items, isLoading: false });
     }
     componentDidMount() {
@@ -16,14 +17,14 @@ class Search extends Component {
       }
     render() {
         const { isLoading, items } = this.state;
-        console.log(items);
         return (
             <div className="homeGrid">
                 <span className="homeTitle">Results</span>
                 <div className="movies">
                     {isLoading ? "Loading..." : items.map(item => {
-                        return <Movie key={item.id}
-                            id={item.id}
+                        return <Movie
+                            key={item.id.videoId}
+                            id={item.id.videoId}
                             title={item.snippet.title}
                             uploader={item.snippet.channelTitle}
                             des={item.snippet.description}

@@ -16,6 +16,7 @@ class Home extends Component {
       }
     render() {
         const { isLoading, items } = this.state;
+        console.log(items);
         return (
             <div className="homeGrid">
                 <span className="homeTitle">Most Viewed</span>
