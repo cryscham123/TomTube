@@ -5,16 +5,26 @@ import Movie from "../movie";
 class Search extends Component {
     state = {
         isLoading: true,
-        items: []
+        items: [],
+        pageName: "",
     };
     getMovies = async () => {
         const { location: { pathname } } = this.props;
-        const  {data:{items}}  = await axios.get(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${pathname.slice(8)}&key=AIzaSyA27KL5mOLc2XfoX9JpmjuInlR9jXfhKmg`);
-        this.setState({ items, isLoading: false });
+        const  {data:{items}}  = await axios.get(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${pathname.slice(8)}&type=video&key=AIzaSyA27KL5mOLc2XfoX9JpmjuInlR9jXfhKmg`);
+        this.setState({ items, isLoading: false, pageName: pathname.slice(8) });
+        console.log(this.state.pageName);
     }
     componentDidMount() {
         this.getMovies();
-      }
+    }
+    bugfix() {
+        const { location: { pathname } } = this.props;
+        if (pathname !== this.state.pageName) {
+            this.getMovies();
+        } else {
+            return null;
+        }
+    }
     render() {
         const { isLoading, items } = this.state;
         return (

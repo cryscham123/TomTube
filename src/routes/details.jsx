@@ -8,7 +8,7 @@ class Details extends Component {
         items: []
     };
     getMovies = async() => {
-        const  {data:{items}}  = await axios.get("https://youtube.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&maxResults=25&key=AIzaSyA27KL5mOLc2XfoX9JpmjuInlR9jXfhKmg");
+        const  {data:{items}}  = await axios.get(`https://youtube.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&maxResults=25&key=${process.env.REACT_APP_YOUTUBE_API_KEY}`);
         this.setState({ items, isLoading: false });
     }
     componentDidMount() {
