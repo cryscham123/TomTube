@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/TomTube/static/css/main.23f99b6f.chunk.css",
-    "main.js": "/TomTube/static/js/main.95bd8c5b.chunk.js",
-    "main.js.map": "/TomTube/static/js/main.95bd8c5b.chunk.js.map",
+    "main.css": "/TomTube/static/css/main.624af2e5.chunk.css",
+    "main.js": "/TomTube/static/js/main.6fb667a0.chunk.js",
+    "main.js.map": "/TomTube/static/js/main.6fb667a0.chunk.js.map",
     "runtime-main.js": "/TomTube/static/js/runtime-main.dd676283.js",
     "runtime-main.js.map": "/TomTube/static/js/runtime-main.dd676283.js.map",
-    "static/js/2.5fae1ea6.chunk.js": "/TomTube/static/js/2.5fae1ea6.chunk.js",
-    "static/js/2.5fae1ea6.chunk.js.map": "/TomTube/static/js/2.5fae1ea6.chunk.js.map",
+    "static/js/2.d8f12f98.chunk.js": "/TomTube/static/js/2.d8f12f98.chunk.js",
+    "static/js/2.d8f12f98.chunk.js.map": "/TomTube/static/js/2.d8f12f98.chunk.js.map",
     "index.html": "/TomTube/index.html",
-    "static/css/main.23f99b6f.chunk.css.map": "/TomTube/static/css/main.23f99b6f.chunk.css.map",
-    "static/js/2.5fae1ea6.chunk.js.LICENSE.txt": "/TomTube/static/js/2.5fae1ea6.chunk.js.LICENSE.txt"
+    "static/css/main.624af2e5.chunk.css.map": "/TomTube/static/css/main.624af2e5.chunk.css.map",
+    "static/js/2.d8f12f98.chunk.js.LICENSE.txt": "/TomTube/static/js/2.d8f12f98.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.dd676283.js",
-    "static/js/2.5fae1ea6.chunk.js",
-    "static/css/main.23f99b6f.chunk.css",
-    "static/js/main.95bd8c5b.chunk.js"
+    "static/js/2.d8f12f98.chunk.js",
+    "static/css/main.624af2e5.chunk.css",
+    "static/js/main.6fb667a0.chunk.js"
   ]
 }
