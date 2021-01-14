@@ -26,9 +26,10 @@ body {
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
   z-index: 10;
   display: grid;
-  grid-template-columns: repeat(2, max-content);
+  grid-template-columns: max-content 1fr;
   align-items: center;
   justify-content: space-between;
+  grid-column-gap: 1.5em;
   width: 100%;
   .nav__link {
     @extend %link;
@@ -55,7 +56,6 @@ body {
   .nav__form {
     display: flex;
     align-items: center;
-    width: 100%;
     .search {
       width: 100%;
       font-size: 1rem;
@@ -160,11 +160,12 @@ body {
   }
   @media screen and (min-width: 921px) {
     grid-template-columns: 1fr min-content;
+    height: 100vh;
   }
   .detailGrid {
     @extend %page;
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(2, max-content);
+    grid-template-rows: min-content max-content;
     grid-row-gap: 1em;
     .video-container {
       position: relative;
@@ -216,6 +217,9 @@ body {
     @extend %page;
     grid-template-rows: min-content 1fr;
     grid-row-gap: 1em;
+    @include responsive("medium") {
+      overflow-y: auto;
+    }
     .otherTitle {
       color: $deepwhite;
       font-size: 0.9rem;
