@@ -10,7 +10,7 @@ class Search extends Component {
     };
     getMovies = async () => {
         const { location: { pathname } } = this.props;
-        const  {data:{items}}  = await axios.get(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${pathname.slice(8)}&type=video&key=AIzaSyA27KL5mOLc2XfoX9JpmjuInlR9jXfhKmg`);
+        const  {data:{items}}  = await axios.get(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${pathname.slice(8)}&type=video&key=${process.env.REACT_APP_YOUTUBE_API_KEY}`);
         this.setState({ items, isLoading: false, pageName: pathname.slice(8) });
         console.log(this.state.pageName);
     }
