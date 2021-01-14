@@ -40,10 +40,10 @@ class Details extends Component {
             return (
                 <div className="totalGrid">
                     <div className="detailGrid">
-                        <div class="video-container">
+                        <div className="video-container">
                             <iframe id="ytplayer" type="text/html" width="100%" height="auto"
                                 src={`https://www.youtube.com/embed/${location.state.id}`}
-                                frameBorder="0" allowFullscreen></iframe>
+                                frameBorder="0" allowFullScreen></iframe>
                         </div>
                         <div className="detail__info">
                             <span className="detail__title">{location.state.title}</span>

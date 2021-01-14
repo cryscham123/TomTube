@@ -91,7 +91,7 @@ body {
     grid-auto-rows: 1fr;
     border-top: 1px solid rgba(255, 255, 255, 0.4);
     @include responsive("small") {
-      width: 435px;
+      width: 419.2px;
     }
     @include responsive("medium") {
       width: 100%;
@@ -165,7 +165,7 @@ body {
   .detailGrid {
     @extend %page;
     grid-template-columns: 1fr;
-    grid-template-rows: min-content max-content;
+    grid-template-rows: min-content min-content;
     grid-row-gap: 1em;
     .video-container {
       position: relative;
@@ -217,7 +217,17 @@ body {
     @extend %page;
     grid-template-rows: min-content 1fr;
     grid-row-gap: 1em;
-    @include responsive("medium") {
+    @media screen and (max-width: 689px) {
+      margin-top: 0;
+    }
+    @media screen and (min-width: 690px) and (max-width: 920px) {
+      margin-top: 0;
+      overflow-y: auto;
+    }
+    @media screen and (min-width: 921px) and (max-width: 1200px) {
+      overflow-y: auto;
+    }
+    @media screen and (min-width: 1201px) {
       overflow-y: auto;
     }
     .otherTitle {
@@ -230,7 +240,7 @@ body {
       grid-auto-rows: 1fr;
       border-top: 1px solid rgba(255, 255, 255, 0.4);
       @include responsive("small") {
-        width: 435px;
+        width: 419.2px;
       }
       @include responsive("medium") {
         width: 100%;
