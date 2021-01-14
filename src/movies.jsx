@@ -1,8 +1,7 @@
 import React from 'react';
 import Movie from './movie';
 
-const Movies = (props) => {
-    const { items } = props;
+const Movies = ({items}) => {
     return (
         <div className="movies">
             {items.map(item => {
@@ -12,6 +11,7 @@ const Movies = (props) => {
                     uploader={item.snippet.channelTitle}
                     des={item.snippet.description}
                     thumbnailM={item.snippet.thumbnails.medium}
+                    items={items}
                 />
             })}
         </div>
