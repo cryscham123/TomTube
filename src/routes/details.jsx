@@ -1,7 +1,7 @@
 import React from 'react';
 import Movies from '../movies';
 
-const Details = ({ location: { state }}) => {
+const Details = ({ history, location: { state }}) => {
     const handleDes = () => {
         const downBtn = document.querySelector(".fa-chevron-down");
         const upBtn = document.querySelector(".fa-chevron-up");
@@ -16,32 +16,37 @@ const Details = ({ location: { state }}) => {
             des.style.display = "none";
         }
     }
-            return (
-                <div className="totalGrid">
-                    <div className="detailGrid">
-                        <div className="video-container">
-                            <iframe id="ytplayer" type="text/html" width="100%" height="auto"
-                                src={`https://www.youtube.com/embed/${state.id}`}
-                                frameBorder="0" allowFullScreen></iframe>
-                        </div>
-                        <div className="detail__info">
-                            <span className="detail__title">{state.title}</span>
-                            <p className="detail__uploader">
-                                {state.uploader}
-                                <button className="desControl" onClick={handleDes}>
-                                    <i className="fas fa-chevron-down"></i>
-                                </button>
-                            </p>
-                            <div className="detail__desCon">
-                                <p className="desCon__des">{state.des}</p>
-                            </div>
-                        </div>
+    if (state === undefined) {
+        history.push("/");
+        return null;
+    } else {
+        return (
+            <div className="totalGrid">
+                <div className="detailGrid">
+                    <div className="video-container">
+                        <iframe id="ytplayer" type="text/html" width="100%" height="auto"
+                            src={`https://www.youtube.com/embed/${state.id}`}
+                            frameBorder="0" allowFullScreen></iframe>
                     </div>
-                    <div className="otherGrid">
-                        <span className="otherTitle">Other videos...</span>
-                        <Movies items={ state.items }/>
+                    <div className="detail__info">
+                        <span className="detail__title">{state.title}</span>
+                        <p className="detail__uploader">
+                            {state.uploader}
+                            <button className="desControl" onClick={handleDes}>
+                                <i className="fas fa-chevron-down"></i>
+                            </button>
+                        </p>
+                        <div className="detail__desCon">
+                            <p className="desCon__des">{state.des}</p>
+                        </div>
                     </div>
                 </div>
-            );
+                <div className="otherGrid">
+                    <span className="otherTitle">Other videos...</span>
+                    <Movies items={state.items} />
+                </div>
+            </div>
+        );
+    }
     }
 export default Details;
