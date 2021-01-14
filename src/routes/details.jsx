@@ -1,11 +1,22 @@
 import React, { Component } from 'react';
+import axios from "axios";
+import Movies from '../movies';
 
 class Details extends Component {
+    state = {
+        isLoading: true,
+        items: []
+    };
+    getMovies = async() => {
+        const  {data:{items}}  = await axios.get("https://youtube.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&maxResults=25&key=AIzaSyA27KL5mOLc2XfoX9JpmjuInlR9jXfhKmg");
+        this.setState({ items, isLoading: false });
+    }
     componentDidMount() {
         const { location, history } = this.props
         if (location.state === undefined) {
             history.push("/");
         }
+        this.getMovies();
     }
     handleDes() {
         const downBtn = document.querySelector(".fa-chevron-down");
@@ -23,27 +34,34 @@ class Details extends Component {
 
     }
     render() {
+        const { isLoading, items } = this.state;
          const { location } = this.props;
         if (location.state) {
             return (
-                <div className="detailGrid">
-                    <div class="video-container">
-                        <iframe id="ytplayer" type="text/html" width="100%" height="auto"
-                            src={`https://www.youtube.com/embed/${location.state.id}`}
-                            frameBorder="0" allowFullscreen></iframe>
-                    </div>
-                    <div className="detail__info">
-                        <span className="detail__title">{location.state.title}</span>
-                        <p className="detail__uploader">
-                            {location.state.uploader}
-                            <button className="desControl" onClick={this.handleDes}>
-                                <i className="fas fa-chevron-down"></i>
-                            </button>
-                        </p>
-                        <div className="detail__desCon">
-                            <p className="desCon__des">{location.state.des}</p>
+                <div className="totalGrid">
+                    <div className="detailGrid">
+                        <div class="video-container">
+                            <iframe id="ytplayer" type="text/html" width="100%" height="auto"
+                                src={`https://www.youtube.com/embed/${location.state.id}`}
+                                frameBorder="0" allowFullscreen></iframe>
+                        </div>
+                        <div className="detail__info">
+                            <span className="detail__title">{location.state.title}</span>
+                            <p className="detail__uploader">
+                                {location.state.uploader}
+                                <button className="desControl" onClick={this.handleDes}>
+                                    <i className="fas fa-chevron-down"></i>
+                                </button>
+                            </p>
+                            <div className="detail__desCon">
+                                <p className="desCon__des">{location.state.des}</p>
+                            </div>
                         </div>
                     </div>
+                    <div className="otherGrid">
+                            <span className="otherTitle">Other videos...</span>
+                            {isLoading ? "Loading..." : <Movies items={ items }/>}
+                        </div>
                 </div>
             );
         } else {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from "axios";
-import Movie from "../movie";
+import Movies from "../movies";
 
 class Home extends Component {
     state = {
@@ -20,16 +20,7 @@ class Home extends Component {
         return (
             <div className="homeGrid">
                 <span className="homeTitle">Most Viewed</span>
-                <div className="movies">
-                    {isLoading ? "Loading..." : items.map(item => {
-                        return <Movie key={item.id}
-                            id={item.id}
-                            title={item.snippet.title}
-                            uploader={item.snippet.channelTitle}
-                            des={item.snippet.description}
-                            thumbnailM={item.snippet.thumbnails.medium}/>
-                    })}
-                </div>
+                {isLoading ? "Loading..." : <Movies items={ items }/>}
             </div>
         );
     }
