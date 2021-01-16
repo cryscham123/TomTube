@@ -3,8 +3,7 @@ import './app.scss';
 import { HashRouter, Route } from "react-router-dom";
 import Home from "./routes/home";
 import Details from "./routes/details";
-import Search from "./routes/search";
-import Nav from "./nav";
+import Nav from "./components/nav";
 
 class App extends Component {
   render() {
@@ -12,9 +11,8 @@ class App extends Component {
       <>
         <HashRouter>
           <Nav />
-          <Route path="/" exact={true} component={Home} />
+          <Route path="/:id" exact={true} component={Home} />
           <Route path="/details/:id" component={Details} />
-          <Route path="/search/:id" component={Search} />
         </HashRouter>
         <footer></footer>
     </>

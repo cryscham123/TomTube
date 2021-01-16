@@ -5,8 +5,8 @@ const Movies = ({items}) => {
     return (
         <div className="movies">
             {items.map(item => {
-                return <Movie key={item.id}
-                    id={item.id}
+                return <Movie key={typeof(item.id) === typeof("") ? item.id : item.id.videoId}
+                    id={typeof(item.id) === typeof("") ? item.id : item.id.videoId}
                     title={item.snippet.title}
                     uploader={item.snippet.channelTitle}
                     des={item.snippet.description}

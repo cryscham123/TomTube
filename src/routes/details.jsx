@@ -1,5 +1,5 @@
 import React from 'react';
-import Movies from '../movies';
+import Movies from '../components/movies';
 
 const Details = ({ history, location: { state }}) => {
     const handleDes = () => {
@@ -17,7 +17,7 @@ const Details = ({ history, location: { state }}) => {
         }
     }
     if (state === undefined) {
-        history.push("/");
+        history.push(`/${"home"}`);
         return null;
     } else {
         return (

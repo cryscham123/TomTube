@@ -1,28 +1,28 @@
-import React, { Component } from 'react';
-import axios from "axios";
-import Movies from "../movies";
+import React, { useState, useEffect } from 'react';
+import Movies from "../components/movies";
+import Youtube from '../service/youtube';
 
-class Home extends Component {
-    state = {
-        isLoading: true,
-        items: []
+const Home = ({ location: { pathname } }) => {
+    const [isLoading, setLoading] = useState(true);
+    const [items, setItems] = useState([]);
+    const youtube = new Youtube(process.env.REACT_APP_YOUTUBE_API_KEY)
+    const getMovies = () => {
+        if (pathname !== "/home") {
+            youtube.search(pathname)
+            .then(items => setItems(items));;
+        } else {
+            youtube.mostViewed()
+            .then(items => setItems(items));
+        }
+        setLoading(false);
     };
-    getMovies = async() => {
-        const  {data:{items}}  = await axios.get(`https://youtube.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&maxResults=25&key=${process.env.REACT_APP_YOUTUBE_API_KEY}`);
-        this.setState({ items, isLoading: false });
-    }
-    componentDidMount() {
-        this.getMovies();
-      }
-    render() {
-        const { isLoading, items } = this.state;
-        return (
-            <div className="homeGrid">
-                <span className="homeTitle">Most Viewed</span>
-                {isLoading ? "Loading..." : <Movies items={ items }/>}
-            </div>
-        );
-    }
-}
+    useEffect(getMovies, [pathname]);
+    return (
+        <div className="homeGrid">
+            <span className="homeTitle">{pathname !== "/home" ? "Search..." : "Most Viewed..."}</span>
+            {isLoading ? "Loading..." : <Movies items={items} />}
+        </div>
+    );
+};
 
 export default Home;

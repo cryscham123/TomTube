@@ -7,12 +7,12 @@ const Nav = (props) => {
     const inputRef = React.createRef();
     const handleSubmit = (event) => {
         event.preventDefault();
-        props.history.push(`/search/${inputRef.current.value}`);
+        props.history.push(`/${inputRef.current.value}`);
         formRef.current.reset();
     }
     return (
         <div className="nav">
-            <Link className="nav__link title" to="/">
+            <Link className="nav__link title" to={`/${"home"}`}>
                 <i className="fab fa-youtube"></i>
                 Tomtube
             </Link>
